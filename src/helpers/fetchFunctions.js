@@ -4,11 +4,14 @@ export const fetchProduct = () => {
 
 export const fetchProductsList = async (query) => {
   const URL_API = `https://api.mercadolibre.com/sites/MLB/search?q=${query}`;
+  if (!query) {
+    throw new Error('Termo de busca não informado');
+  }
   try {
     const response = await fetch(URL_API);
     const data = await response.json();
     return data.results;
   } catch (error) {
-    throw new Error('Termo de busca não informado');
+    return error.message;
   }
 };
