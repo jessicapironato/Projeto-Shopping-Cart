@@ -13,11 +13,7 @@ export const fetchProductsList = async (query) => {
   if (!query) {
     throw new Error('Termo de busca não informado');
   }
-  try {
-    const response = await fetch(URL_API);
-    const data = await response.json();
-    return data.results;
-  } catch (error) {
-    return error.message;
-  }
+  const response = await fetch(URL_API);
+  const data = await response.json();
+  return data.results;
 };
