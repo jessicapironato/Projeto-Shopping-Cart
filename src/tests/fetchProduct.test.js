@@ -15,10 +15,6 @@ describe('Teste a função fetchProduct', () => {
     expect(fetchProduct()).rejects.toThrow('ID não informado')
   })
 
-
-//   it('Teste se o retorno da função fetchProduct com o argumento do produto "MLB1405519561" é uma estrutura de dados igual ao objeto produto que já está importado no arquivo.', async () => {
-//     expect(fetchProduct('MLB1405519561')).resolves.toBe(product);
-//  });
 it('fetch é chamado ao executar fetchProductsList', async () => {
   await fetchProduct('computador');
   expect(fetch).toHaveBeenCalled();
