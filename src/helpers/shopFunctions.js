@@ -1,4 +1,4 @@
-import { removeCartID, saveCartID } from './cartFunctions';
+import { removeCartID, saveCartID, getSavedCartIDs } from './cartFunctions';
 import { fetchProduct } from './fetchFunctions';
 
 // Esses comentários que estão antes de cada uma das funções são chamados de JSdoc,
@@ -135,4 +135,13 @@ export const createProductElement = ({ id, title, thumbnail, price }) => {
   });
 
   return section;
+};
+
+export const renderingLocalStorage = () => {
+  const saveCart = getSavedCartIDs();
+  saveCart.map(async (element) => {
+    const cartProducts = document.getElementsByClassName('cart__products')[0];
+    const fetch = await fetchProduct(element);
+    cartProducts.appendChild(createCartProductElement(fetch));
+  });
 };

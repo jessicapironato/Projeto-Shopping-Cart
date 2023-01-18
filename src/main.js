@@ -1,7 +1,7 @@
 import { searchCep } from './helpers/cepFunctions';
 import './style.css';
 import { fetchProductsList } from './helpers/fetchFunctions';
-import { createProductElement } from './helpers/shopFunctions';
+import { createProductElement, renderingLocalStorage } from './helpers/shopFunctions';
 
 document.querySelector('.cep-button').addEventListener('click', searchCep);
 
@@ -44,3 +44,7 @@ const productPrinted = async () => {
   }
 };
 productPrinted();
+
+window.onload = () => {
+  renderingLocalStorage();
+};
