@@ -26,7 +26,7 @@ it('fetch é chamado com o endpoint correto ao executar fetchProduct', async () 
 });
 
 it('o retorno da função fetchProduct é uma estrutura de dados igual ao objeto produto', async () => {
-  expect(await fetchProduct('MLB1405519561')).resolves.toEqual(product);
+  expect(await fetchProduct('MLB1405519561')).toEqual(product);
 });
 });
 

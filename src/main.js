@@ -21,14 +21,26 @@ const loadingRemove = () => {
   productSelected.removeChild(textCarregando);
 };
 
+// requisito 5
+const errorAdd = () => {
+  const error = document.createElement('p');
+  error.innerHTML = 'Algum erro ocorreu, recarregue a página e tente novamente';
+  error.classList.add('error');
+  productSelected.appendChild(error);
+};
+
 // requisito 3
 
 const productPrinted = async () => {
-  loadingAdd();
-  const productInformation = await fetchProductsList('computador');
-  loadingRemove();
-  productInformation.forEach((element) => {
-    productSelected.appendChild(createProductElement(element));
-  });
+  try {
+    loadingAdd();
+    const productInformation = await fetchProductsList('computador');
+    loadingRemove();
+    productInformation.forEach((element) => {
+      productSelected.appendChild(createProductElement(element));
+    });
+  } catch (error) {
+    errorAdd();
+  }
 };
 productPrinted();
